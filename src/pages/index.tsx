@@ -4,7 +4,7 @@ import vercel from "../assets/logo__vercel.svg"
 import planetscale from "../assets/logo__planetscale.svg"
 import trpc from "../assets/logo__trpc.svg"
 import next from "../assets/logo__next.svg"
-import Link from "next/link";
+import Link, { type LinkProps } from "next/link";
 import Head from "next/head";
 
 const positions = [
@@ -55,9 +55,13 @@ const positions = [
   }
 ]
 
-const Button = ({ children, href }: { children?: React.ReactNode, href: string }) => {
+const Button = ({ children, target, ...props }: LinkProps & { target?: string, children?: React.ReactNode }) => {
   return (
-    <Link href={href} className={"inline-flex px-4 py-2 text-white border border-white rounded-full hover:bg-white hover:text-black"}>
+    <Link 
+      className={"inline-flex px-4 py-2 text-white border border-white rounded-full hover:bg-white hover:text-black"}
+      target={target}
+      {...props}
+    >
       {children}
     </Link>
   )
@@ -88,9 +92,24 @@ export default function Home() {
                 Professional Agile Agencies and innovative Startups.
               </p>
               <div className={"flex gap-4"}>
-                <Button href={'https://github.com/jakehwll'}>GitHub</Button>
-                <Button href={'https://linkedin.com/in/jake-hwll'}>LinkedIn</Button>
-                <Button href={'mailto:jake@hwll.me'}>Email</Button>
+                <Button 
+                  href={'https://github.com/jakehwll'}
+                  target={'_blank'}
+                >
+                  GitHub
+                </Button>
+                <Button 
+                  href={'https://linkedin.com/in/jake-hwll'}
+                  target={'_blank'}
+                >
+                  LinkedIn
+                </Button>
+                <Button 
+                  href={'mailto:jake@hwll.me'}
+                  target={'_blank'}
+                >
+                  Email
+                </Button>
               </div>
             </div>
           </div>
