@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html {
+        @apply bg-[#151515];
+        @apply text-white;
+        background-image: url('/noise.jpg');
+    }
+    :root {
+        font-family: 'Inter', sans-serif;
+    }
+    @supports (font-variation-settings: normal) {
+        :root {
+            font-family: 'Inter var', sans-serif;
+        }
+    }
+    .font-sans {
+        font-feature-settings: 
+            'cv10' on, 
+            'cv11' on, 
+            'cv09' on, 
+            'cv08' on, 
+            'cv02' on, 
+            'ss02' on, 
+            'cv05' on, 
+            'cv06' on, 
+            'salt' on, 
+            'ss03' on, 
+            'ss01' on, 
+            'cv04' on, 
+            'cv03' on, 
+            'cv01' on, 
+            'cv07' on, 
+            'ss04' on;
+    }
+}
