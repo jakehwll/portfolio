@@ -168,7 +168,7 @@ export default function Home() {
               <span className={"sr-only"}>Next.js</span>
             </Link>
           </div>
-          <Button href={'#'}>
+          <Button href={'https://github.com/jakehwll/portfolio'}>
             View Source
           </Button>
         </footer>
