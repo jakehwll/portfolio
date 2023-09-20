@@ -5,6 +5,7 @@ import planetscale from "../assets/logo__planetscale.svg"
 import trpc from "../assets/logo__trpc.svg"
 import next from "../assets/logo__next.svg"
 import Link from "next/link";
+import Head from "next/head";
 
 const positions = [
   {
@@ -56,15 +57,18 @@ const positions = [
 
 const Button = ({ children, href }: { children?: React.ReactNode, href: string }) => {
   return (
-    <a href={href} className={"inline-flex px-4 py-2 text-white border border-white rounded-full hover:bg-white hover:text-black"}>
+    <Link href={href} className={"inline-flex px-4 py-2 text-white border border-white rounded-full hover:bg-white hover:text-black"}>
       {children}
-    </a>
+    </Link>
   )
 }
 
 export default function Home() {
   return (
     <>
+      <Head>
+        <title>Jake Howell - Software Engineer Australia</title>
+      </Head>
       <main className="max-w-[50rem] w-full mx-auto pt-12 pb-24 px-8 flex flex-col gap-16">
         <section className="flex flex-col-reverse lg:flex-row gap-16 items-center">
           <div className="w-full max-w-[22rem]">
@@ -146,18 +150,22 @@ export default function Home() {
             <Link href={'https://vercel.com/'}>
               {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
               <Image src={vercel} alt={''} className={"w-6 h-6"} />
+              <span className={"sr-only"}>Vercel</span>
             </Link>
             <Link href={'https://planetscale.com/'}>
               {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
               <Image src={planetscale} alt={''} className={"w-6 h-6"} />
+              <span className={"sr-only"}>Planetscale</span>
             </Link>
             <Link href={'https://trpc.io/'}>
               {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
               <Image src={trpc} alt={''} className={"w-6 h-6"} />
+              <span className={"sr-only"}>TRPC</span>
             </Link>
             <Link href={'https://nextjs.org/'}>
               {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
               <Image src={next} alt={''} className={"w-6 h-6"} />
+              <span className={"sr-only"}>Next.js</span>
             </Link>
           </div>
           <Button href={'#'}>
