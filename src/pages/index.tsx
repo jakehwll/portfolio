@@ -4,8 +4,14 @@ import vercel from "../assets/logo__vercel.svg"
 import planetscale from "../assets/logo__planetscale.svg"
 import trpc from "../assets/logo__trpc.svg"
 import next from "../assets/logo__next.svg"
+import previewBankWAW from '../assets/preview__bankwaw.jpg'
+import previewParalympics from '../assets/preview__paralympics.jpg'
+import previewPinkTest from '../assets/preview__pinktest.jpg'
+import previewRythm from '../assets/preview__rythm.jpg'
+import previewPlanPay from '../assets/preview__planpay.jpg'
 import Link, { type LinkProps } from "next/link";
 import Head from "next/head";
+import { useState } from "react";
 
 const positions = [
   {
@@ -54,6 +60,95 @@ const positions = [
     location: 'Wodonga, Australia'
   }
 ]
+
+const previouswork = [
+  {
+    title: 'PlanPay',
+    tags: ['Development'],
+    image: previewPlanPay,
+    url: 'https://planpay.com'
+  },
+  {
+    title: 'Rythm',
+    tags: ['Development'],
+    image: previewRythm,
+    url: 'https://rythm.com'
+  },
+  {
+    title: 'Pink Test',
+    tags: ['Design', 'Development'],
+    image: previewPinkTest,
+    url: 'https://pinktest.com.au'
+  },
+  {
+    title: 'Paralympics Winter Campaign',
+    tags: ['Design', 'Development'],
+    image: previewParalympics,
+    url: 'https://web.archive.org/web/20220303220411/https://donate.paralympic.org.au/'
+  },
+  {
+    title: 'BankWAW',
+    tags: ['Design', 'Development'],
+    image: previewBankWAW,
+    url: 'https://bankwaw.com.au/'
+  }
+]
+
+const PreviousWork = () => {
+  const [filter, setFilter] = useState<'All' | 'Design' | 'Development'>('All')
+
+  const FilterButton = ({ children, onClick }: { children?: React.ReactNode, onClick: 'All' | 'Design' | 'Development' } ) => {
+    return (
+      <button
+        type={'button'}
+        onClick={() => setFilter(onClick)}
+        className={[
+          "inline-flex px-4 py-2 text-white border border-white rounded-full hover:bg-white hover:text-black",
+          ...(onClick === filter ? ['bg-white text-black'] : []),
+        ].join(' ')}
+      >
+        {children}
+      </button>
+    )
+  }
+
+  return (
+    <section className="flex flex-col gap-6">
+      <h2 className={"sr-only"}>Previous Work</h2>
+      <div className="flex flex-wrap justify-center gap-6">
+        <FilterButton onClick={'All'}>All</FilterButton>
+        <FilterButton onClick={'Design'}>Design</FilterButton>
+        <FilterButton onClick={'Development'}>Development</FilterButton>
+      </div>
+      <div className="grid grid-cols-1 lg:grid-cols-3 w-full gap-4">
+        {previouswork.map(({ title, tags, image, url }) => {
+          if ( !tags.includes(filter) && filter !== 'All' ) {
+            return null
+          }
+          return (
+            <article 
+              key={title}
+              className={"flex flex-col items-center justify-center relative bg-black aspect-[4/3] rounded-lg border border-white/20 gap-2"}
+            >
+              <div className={"relative z-40 flex flex-col items-center justify-center text-center gap-2"}>
+                <div className={"text-xs bg-white text-black py-1 px-3 rounded-full"}>{tags.join(' + ')}</div>
+                <h3 className={"text-xl"}>{title}</h3>
+              </div>
+              <Image 
+                src={image} 
+                alt={''} 
+                className={"object-cover object-center rounded-lg z-30"} 
+                layout={"fill"} 
+                placeholder={"blur"}
+              />
+              <Link href={url} className={"absolute inset-0 z-50"} target={'_blank'} />
+            </article>
+          )
+        })}
+      </div>
+    </section>
+  )
+}
 
 const Button = ({ children, target, ...props }: LinkProps & { target?: string, children?: React.ReactNode }) => {
   return (
@@ -135,25 +230,7 @@ export default function Home() {
             ))}
           </main>
         </section>
-        <section>
-          <div className="flex flex-wrap justify-center gap-6">
-            <Button href={'#'}>
-              All
-            </Button>
-            <Button href={'#'}>
-              Design
-            </Button>
-            <Button href={'#'}>
-              Development
-            </Button>
-            <Button href={'#'}>
-              E-Commerce
-            </Button>
-            <Button href={'#'}>
-              Business
-            </Button>
-          </div>
-        </section>
+        <PreviousWork />
         <section>
           <div className="flex justify-center items-center">
             <a href={'mailto:jake@hwll.me'} className={"text-3xl"}>jake@hwll.me</a>
