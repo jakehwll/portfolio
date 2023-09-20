@@ -74,7 +74,7 @@ const previouswork = [
     title: 'Rythm',
     tags: ['Development'],
     image: previewRythm,
-    url: 'https://rythm.fm'
+    url: '/clients/rythm'
   },
   {
     title: 'Pink Test',
@@ -143,7 +143,7 @@ const PreviousWork = () => {
                 layout={"fill"} 
                 placeholder={"blur"}
               />
-              <Link href={url} className={"absolute inset-0 z-50"} target={'_blank'} />
+              <Link href={url} className={"absolute inset-0 z-50"} target={url.startsWith('https://') ? '_blank' : ''} />
             </article>
           )
         })}
@@ -208,7 +208,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="border-t border-white">
+        <section className="border-t border-white/10">
           <header className={"py-8"}>
             <h2 className={"text-2xl"}>Experience</h2>
           </header>
@@ -217,7 +217,7 @@ export default function Home() {
               <article className={"flex flex-col lg:flex-row gap-12"} key={`${company}-${role}`}>
                 <div className={"flex flex-1 flex-col gap-2"}>
                   <h3 className={"text-xl leading-relaxed"}>{company} — {role}</h3>
-                  <p className={"leading-relaxed text-white/80"}>
+                  <p className={"leading-relaxed text-white/50"}>
                     {description}
                   </p>
                 </div>
