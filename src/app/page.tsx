@@ -74,7 +74,7 @@ const previouswork = [
     title: 'Rythm',
     tags: ['Development'],
     image: previewRythm,
-    url: 'https://rythm.com'
+    url: 'https://rythm.fm'
   },
   {
     title: 'Pink Test',
