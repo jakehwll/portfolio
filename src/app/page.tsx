@@ -1,3 +1,5 @@
+'use client';
+
 import Image from "next/image";
 import profile from "../assets/profile.jpg"
 import vercel from "../assets/logo__vercel.svg"
@@ -165,9 +167,6 @@ const Button = ({ children, target, ...props }: LinkProps & { target?: string, c
 export default function Home() {
   return (
     <>
-      <Head>
-        <title>Jake Howell - Software Engineer Australia</title>
-      </Head>
       <main className="max-w-[50rem] w-full mx-auto pt-12 pb-24 px-8 flex flex-col gap-16">
         <section className="flex flex-col-reverse lg:flex-row gap-16 items-center">
           <div className="w-full max-w-[22rem]">
