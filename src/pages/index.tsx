@@ -73,7 +73,7 @@ export default function Home() {
         <section className="flex flex-col-reverse lg:flex-row gap-16 items-center">
           <div className="w-full max-w-[22rem]">
             <div className="relative bg-black aspect-[3/4] rounded-lg">
-              <Image src={profile} layout={"fill"} alt="" className={"object-cover object-center rounded-lg"} />
+              <Image src={profile} layout={"fill"} placeholder={"blur"} alt="" className={"object-cover object-center rounded-lg"} />
             </div>
           </div>
           <div className="flex flex-col gap-8">
