@@ -103,8 +103,8 @@ const PreviousWork = () => {
         type={'button'}
         onClick={() => setFilter(onClick)}
         className={[
-          "inline-flex px-4 py-2 text-white border border-white rounded-full hover:bg-white hover:text-black",
-          ...(onClick === filter ? ['bg-white text-black'] : []),
+          "inline-flex px-4 py-2 border border-white rounded-full hover:bg-white hover:text-black",
+          ...(onClick === filter ? ['bg-white text-black'] : ['text-white']),
         ].join(' ')}
       >
         {children}
