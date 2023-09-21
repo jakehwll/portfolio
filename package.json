@@ -1,6 +1,5 @@
 {
-  "name": "jakehwll-sep-2023",
-  "version": "0.1.0",
+  "name": "jakehwll",
   "private": true,
   "scripts": {
     "build": "next build",
@@ -31,8 +30,5 @@
     "prettier-plugin-tailwindcss": "^0.2.8",
     "tailwindcss": "^3.3.0",
     "typescript": "^5.0.4"
-  },
-  "ct3aMetadata": {
-    "initVersion": "7.16.0"
   }
 }
