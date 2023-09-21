@@ -1,10 +1,8 @@
-import Head from "next/head"
-import Script from "next/script";
 import "~/styles/globals.css";
 
 export const metadata = {
-  title: 'Jake Howell - Software Engineer Australia',
-  description: '',
+  title: 'Jake Howell - Software Engineer, Australia',
+  description: 'Hi! My name is Jake and I am a Software Engineer',
 }
 
 export default function RootLayout({
