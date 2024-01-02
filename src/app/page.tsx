@@ -17,6 +17,19 @@ import { useState } from "react";
 
 const positions = [
   {
+    company: 'Daisee',
+    role: 'Backend Software Engineer',
+    description: `
+      As a Backend Software Engineer, I'm working with the team 
+      to deliver the next generation of AI-powered customer service solutions.
+    `,
+    period: {
+      start: '2023',
+      end: '2024'
+    },
+    location: 'Sydney, Australia'
+  },
+  {
     company: 'PlanPay',
     role: 'Fullstack Software Engineer',
     description: `
@@ -65,36 +78,36 @@ const positions = [
 
 const previouswork = [
   {
-    title: 'PlanPay',
-    tags: ['Development'],
+    title: "PlanPay",
+    tags: ["Development"],
     image: previewPlanPay,
-    url: 'https://planpay.com'
+    url: "https://planpay.com",
   },
   {
-    title: 'Rythm',
-    tags: ['Development'],
+    title: "Rythm",
+    tags: ["Development"],
     image: previewRythm,
-    url: '/clients/rythm'
+    url: "/clients/rythm",
   },
   {
-    title: 'Pink Test',
-    tags: ['Design', 'Development'],
+    title: "Pink Test",
+    tags: ["Design", "Development"],
     image: previewPinkTest,
-    url: 'https://pinktest.com.au'
+    url: "https://pinktest.com.au",
   },
   {
-    title: 'Paralympics Winter Campaign',
-    tags: ['Design', 'Development'],
+    title: "Paralympics Winter Campaign",
+    tags: ["Design", "Development"],
     image: previewParalympics,
-    url: 'https://web.archive.org/web/20220303220411/https://donate.paralympic.org.au/'
+    url: "https://web.archive.org/web/20220303220411/https://donate.paralympic.org.au/",
   },
   {
-    title: 'BankWAW',
-    tags: ['Design', 'Development'],
+    title: "BankWAW",
+    tags: ["Design", "Development"],
     image: previewBankWAW,
-    url: 'https://bankwaw.com.au/'
-  }
-]
+    url: "https://bankwaw.com.au/",
+  },
+];
 
 const PreviousWork = () => {
   const [filter, setFilter] = useState<'All' | 'Design' | 'Development'>('All')
