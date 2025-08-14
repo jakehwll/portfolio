@@ -3,8 +3,6 @@
 import Image from "next/image";
 import profile from "../assets/profile.jpg"
 import vercel from "../assets/logo__vercel.svg"
-import planetscale from "../assets/logo__planetscale.svg"
-import trpc from "../assets/logo__trpc.svg"
 import next from "../assets/logo__next.svg"
 import previewBankWAW from '../assets/preview__bankwaw.jpg'
 import previewParalympics from '../assets/preview__paralympics.jpg'
@@ -261,16 +259,6 @@ export default function Home() {
               {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
               <Image src={vercel} alt={''} className={"w-6 h-6"} />
               <span className={"sr-only"}>Vercel</span>
-            </Link>
-            <Link href={'https://planetscale.com/'}>
-              {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
-              <Image src={planetscale} alt={''} className={"w-6 h-6"} />
-              <span className={"sr-only"}>Planetscale</span>
-            </Link>
-            <Link href={'https://trpc.io/'}>
-              {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
-              <Image src={trpc} alt={''} className={"w-6 h-6"} />
-              <span className={"sr-only"}>TRPC</span>
             </Link>
             <Link href={'https://nextjs.org/'}>
               {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
