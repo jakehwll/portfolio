@@ -196,7 +196,7 @@ export default function Home() {
             </div>
             <div className={"flex flex-col gap-6"}>
               <p className={"leading-relaxed"}>
-                With over 5 years of experience as a Full Stack Engineer, 
+                With over 7 years of experience as a Software Engineer, 
                 I bring a wealth of expertise from the realms of 
                 Professional Agile Agencies and innovative Startups.
               </p>
