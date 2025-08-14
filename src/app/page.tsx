@@ -180,7 +180,7 @@ const Button = ({ children, target, ...props }: LinkProps & { target?: string, c
 export default function Home() {
   return (
     <>
-      <main className="max-w-lg w-full mx-auto pt-12 pb-24 px-8 flex flex-col gap-16">
+      <main className="max-w-[50rem] w-full mx-auto pt-12 pb-24 px-8 flex flex-col gap-16">
         <section className="flex flex-col-reverse lg:flex-row gap-16 items-center">
           <div className="w-full max-w-[22rem]">
             <div className="relative bg-black aspect-[3/4] rounded-lg">
