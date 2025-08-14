@@ -12,7 +12,6 @@ import previewPinkTest from '../assets/preview__pinktest.jpg'
 import previewRythm from '../assets/preview__rythm.jpg'
 import previewPlanPay from '../assets/preview__planpay.jpg'
 import Link, { type LinkProps } from "next/link";
-import Head from "next/head";
 import { useState } from "react";
 
 const positions = [
