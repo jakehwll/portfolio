@@ -19,12 +19,15 @@ const positions = [
     company: 'daisee',
     role: 'Senior Software Engineer',
     description: `
-      As a Senior Software Engineer, I'm working with the team 
-      to deliver the next generation of AI-powered customer service solutions.
+      As a Senior Software Engineer at Daisee, I architect and deliver scalable
+      systems, lead cross-functional initiatives, and integrate AI-driven
+      features into our platform. My work spans frontend frameworks,
+      ETL pipelines, and technical R&D — always focused on building
+      maintainable, customer-centric solutions.
     `,
     period: {
       start: '2023',
-      end: '2024'
+      end: '2025'
     },
     location: 'Sydney, Australia'
   },
