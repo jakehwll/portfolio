@@ -18,9 +18,9 @@ import { useState } from "react";
 const positions = [
   {
     company: 'daisee',
-    role: 'Backend Software Engineer',
+    role: 'Senior Software Engineer',
     description: `
-      As a Backend Software Engineer, I'm working with the team 
+      As a Senior Software Engineer, I'm working with the team 
       to deliver the next generation of AI-powered customer service solutions.
     `,
     period: {
