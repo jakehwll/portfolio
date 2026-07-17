@@ -1,0 +1,33 @@
+---
+import { GITHUB_USERNAME } from '../lib/github';
+import { fetchPinnedRepos } from '../lib/github-pinned';
+
+const repos = (await fetchPinnedRepos()) ?? [];
+---
+
+{
+	repos.length > 0 && (
+		<section class="flex flex-col gap-4" aria-label="Projects">
+			<h2>Projects</h2>
+			<ul class="flex flex-col gap-6">
+				{repos.map((repo) => {
+					const owner = repo.nameWithOwner.split('/')[0];
+					const title =
+						owner === GITHUB_USERNAME ? repo.name : repo.nameWithOwner;
+					return (
+						<li class="flex flex-col gap-1">
+							<a
+								href={repo.url}
+								target="_blank"
+								rel="nofollow noopener noreferrer"
+							>
+								{title}
+							</a>
+							{repo.description && <p>{repo.description}</p>}
+						</li>
+					);
+				})}
+			</ul>
+		</section>
+	)
+}

@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SydneyTime from '../components/SydneyTime.astro';
+import GitHubPinned from '../components/GitHubPinned.astro';
+import GitHubActivity from '../components/GitHubActivity.astro';
+import CompanyLink from '../components/CompanyLink.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout type="profile">
+	<section class="flex flex-col gap-4" aria-label="About">
+		<p>
+			I'm Jake Howell, an Aussie software engineer. 🦘
+		</p>
+		<div>
+			Currently building{" "}
+			<span class="font-medium text-stone-950 dark:text-white">Developer Experience (DEVEX)</span>
+			{" "}at{" "}
+			<CompanyLink href="https://www.coder.com" name="Coder" icon="/companies/coder.jpg" /> remotely.<br />
+			Previously built things at <CompanyLink href="https://daisee.com" name="daisee" icon="/companies/daisee.jpg" />, <CompanyLink href="https://planpay.com" name="PlanPay" icon="/companies/planpay.jpg" />, <CompanyLink href="https://rythm.fm" name="Rythm" icon="/companies/rythm.jpg" /> and <CompanyLink href="https://webmatrix.au" name="WEB MATRIX" icon="/companies/webmatrix.jpg" />.
+		</div>
+		<p>Outside of work, I build developer tools, backend systems and whatever else catches my interest.</p>
+		<p>Local time: <SydneyTime /> in Sydney 🇦🇺</p>
+	</section>
+	<GitHubPinned />
+	<GitHubActivity />
+	<Footer />
+</Layout>

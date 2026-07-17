@@ -1,0 +1,33 @@
+@import "@fontsource-variable/geist";
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Geist Variable", sans-serif;
+}
+
+html {
+  color-scheme: light dark;
+}
+
+body {
+  @apply bg-stone-50 py-16 font-sans text-stone-600 antialiased leading-loose dark:bg-stone-950 dark:text-stone-400;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply text-stone-950 dark:text-white;
+}
+
+/* Text links — skip empty anchors (e.g. contribution squares) and opt-outs */
+a:not(:empty):not(.no-underline) {
+  @apply font-medium text-stone-950 underline decoration-dashed decoration-current/45 underline-offset-4 transition-[text-decoration-color,text-underline-offset,text-decoration-style] duration-200 ease-out motion-reduce:transition-none dark:text-white;
+}
+
+a:not(:empty):not(.no-underline):hover,
+a:not(:empty):not(.no-underline):focus-visible {
+  @apply decoration-solid decoration-current underline-offset-6;
+}

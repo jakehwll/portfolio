@@ -1,0 +1,31 @@
+---
+interface Props {
+	href: string;
+	name: string;
+	icon: string;
+}
+
+const { href, name, icon } = Astro.props;
+---
+
+<a
+	href={href}
+	target="_blank"
+	rel="nofollow noopener noreferrer"
+	class="group relative inline-block hover:z-10 focus-visible:z-10"
+>
+	{name}
+	<span
+		class="pointer-events-none absolute -top-1 -right-4 z-10 size-5 origin-center scale-[0.85] rotate-[8deg] overflow-hidden rounded-sm opacity-0 shadow-sm transition-[opacity,transform] duration-200 ease-[cubic-bezier(0.34,1.4,0.64,1)] after:pointer-events-none after:absolute after:inset-0 after:rounded-sm after:ring-1 after:ring-inset after:ring-black/15 group-hover:scale-100 group-hover:opacity-100 group-focus-visible:scale-100 group-focus-visible:opacity-100 motion-reduce:transition-opacity motion-reduce:duration-150 dark:after:ring-white/10"
+	>
+		<img
+			src={icon}
+			alt=""
+			width="20"
+			height="20"
+			class="size-full"
+			loading="lazy"
+			decoding="async"
+		/>
+	</span>
+</a>

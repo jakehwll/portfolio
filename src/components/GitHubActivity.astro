@@ -1,0 +1,76 @@
+---
+import {
+	CONTRIBUTION_MONTHS,
+	GITHUB_USERNAME,
+} from '../lib/github';
+import {
+	fetchContributions,
+	type ContributionLevel,
+} from '../lib/github-contributions';
+
+const levelClass: Record<ContributionLevel, string> = {
+	NONE: 'bg-stone-200 dark:bg-stone-800',
+	FIRST_QUARTILE: 'bg-green-200 dark:bg-green-900',
+	SECOND_QUARTILE: 'bg-green-400 dark:bg-green-700',
+	THIRD_QUARTILE: 'bg-green-500 dark:bg-green-500',
+	FOURTH_QUARTILE: 'bg-green-600 dark:bg-green-400',
+};
+
+const dateFormatter = new Intl.DateTimeFormat(undefined, {
+	weekday: 'short',
+	day: 'numeric',
+	month: 'short',
+	year: 'numeric',
+});
+
+const data = await fetchContributions();
+const weeks = data?.weeks ?? [];
+const total = data?.total ?? 0;
+const totalLabel = `${total.toLocaleString()} contributions in the last ${CONTRIBUTION_MONTHS} months`;
+---
+
+{
+	weeks.length > 0 && (
+		<section
+			class="flex flex-col gap-3 [content-visibility:auto] [contain-intrinsic-size:auto_120px]"
+			aria-label="GitHub activity"
+		>
+			<div
+				class="flex w-full gap-1"
+				role="group"
+				aria-label={totalLabel}
+			>
+				{weeks.map((week) => (
+					<div class="flex min-w-0 flex-1 flex-col gap-1">
+						{week.map((day) => {
+							const label = `${day.contributionCount} contribution${day.contributionCount === 1 ? '' : 's'} on ${dateFormatter.format(new Date(day.date + 'T12:00:00'))}`;
+							return (
+								<a
+									href={`https://github.com/${GITHUB_USERNAME}?tab=overview&from=${day.date}&to=${day.date}`}
+									target="_blank"
+									rel="nofollow noopener noreferrer"
+									class:list={[
+										'aspect-square w-full rounded-[2px] transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-green-400',
+										levelClass[day.contributionLevel],
+									]}
+									title={label}
+									aria-label={label}
+								/>
+							);
+						})}
+					</div>
+				))}
+			</div>
+			<p class="text-sm">
+				<a
+					href={`https://github.com/${GITHUB_USERNAME}`}
+					target="_blank"
+					rel="nofollow noopener noreferrer"
+					class="no-underline"
+				>
+					{totalLabel}
+				</a>
+			</p>
+		</section>
+	)
+}
