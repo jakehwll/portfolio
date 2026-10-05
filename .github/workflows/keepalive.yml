@@ -1,0 +1,33 @@
+name: Keep scheduled workflows enabled
+
+# A schedule run is not repository activity. After 60 days without a push,
+# GitHub disables schedule triggers, which stops the daily Pages rebuild.
+# This pushes an empty commit only after a quiet stretch so that clock resets.
+# GITHUB_TOKEN pushes do not start new workflow runs, so this does not redeploy.
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  keepalive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Commit if the default branch has been quiet
+        run: |
+          age_days=$(( ($(date +%s) - $(git log -1 --format=%ct)) / 86400 ))
+          if [ "$age_days" -lt 21 ]; then
+            echo "Last commit was ${age_days} days ago; leaving history alone."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit --allow-empty -m "chore: keep scheduled workflows enabled"
+          git push

@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
   # Keep the contribution graph fresh without a client-side third-party API.
+  # keepalive.yml is what stops GitHub from disabling this after 60 quiet days.
   schedule:
     - cron: "0 6 * * *"
   workflow_dispatch:
