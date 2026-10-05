@@ -3,6 +3,11 @@ import { GITHUB_USERNAME } from '../lib/github';
 import { fetchPinnedRepos } from '../lib/github-pinned';
 
 const repos = (await fetchPinnedRepos()) ?? [];
+
+/** GitHub language colors are hex; ignore anything else before using it as CSS. */
+function languageSwatch(color: string | null): string | undefined {
+	return color && /^#[0-9a-fA-F]{3,8}$/.test(color) ? color : undefined;
+}
 ---
 
 {
@@ -14,6 +19,8 @@ const repos = (await fetchPinnedRepos()) ?? [];
 					const owner = repo.nameWithOwner.split('/')[0];
 					const title =
 						owner === GITHUB_USERNAME ? repo.name : repo.nameWithOwner;
+					const language = repo.primaryLanguage;
+					const swatch = language ? languageSwatch(language.color) : undefined;
 					return (
 						<li class="flex flex-col gap-1">
 							<a
@@ -24,6 +31,19 @@ const repos = (await fetchPinnedRepos()) ?? [];
 								{title}
 							</a>
 							{repo.description && <p>{repo.description}</p>}
+							{language && (
+								<p class="flex items-center gap-1.5 text-sm">
+									<span
+										class:list={[
+											'size-2 rounded-full',
+											!swatch && 'bg-stone-400 dark:bg-stone-500',
+										]}
+										style={swatch ? `background-color: ${swatch}` : undefined}
+										aria-hidden="true"
+									/>
+									{language.name}
+								</p>
+							)}
 						</li>
 					);
 				})}

@@ -1,10 +1,16 @@
 import { GITHUB_USERNAME, githubFallback, githubGraphql } from "./github";
 
+type RepoLanguage = {
+  name: string;
+  color: string | null;
+};
+
 type PinnedRepo = {
   name: string;
   nameWithOwner: string;
   description: string | null;
   url: string;
+  primaryLanguage: RepoLanguage | null;
 };
 
 type PinnedQuery = {
@@ -25,6 +31,10 @@ const QUERY = `
             nameWithOwner
             description
             url
+            primaryLanguage {
+              name
+              color
+            }
           }
         }
       }
@@ -39,18 +49,21 @@ const DUMMY_PINNED: PinnedRepo[] = [
     nameWithOwner: `${GITHUB_USERNAME}/wynnjs`,
     description: "A TypeScript client for exploring the Wynncraft API",
     url: `https://github.com/${GITHUB_USERNAME}/wynnjs`,
+    primaryLanguage: { name: "TypeScript", color: "#3178c6" },
   },
   {
     name: "intertui",
     nameWithOwner: `${GITHUB_USERNAME}/intertui`,
     description: "A terminal client for Intercept",
     url: `https://github.com/${GITHUB_USERNAME}/intertui`,
+    primaryLanguage: { name: "Go", color: "#00ADD8" },
   },
   {
     name: "minecraftle-v2",
     nameWithOwner: `${GITHUB_USERNAME}/minecraftle-v2`,
     description: "Wordle with a Minecraft spin",
     url: `https://github.com/${GITHUB_USERNAME}/minecraftle-v2`,
+    primaryLanguage: { name: "TypeScript", color: "#3178c6" },
   },
 ];
 
